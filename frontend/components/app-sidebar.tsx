@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/sidebar"
 import { LayoutDashboardIcon, ListIcon, ChartBarIcon, FolderIcon, UsersIcon, CameraIcon, FileTextIcon, Settings2Icon, CircleHelpIcon, SearchIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, CommandIcon } from "lucide-react"
 
+
 const data = {
   user: {
     name: "shadcn",
@@ -25,7 +26,7 @@ const data = {
   },
   navMain: [
     {
-      title: "Dashboard",
+      title: "Transactions",
       url: "#",
       icon: (
         <LayoutDashboardIcon
@@ -33,7 +34,7 @@ const data = {
       ),
     },
     {
-      title: "Lifecycle",
+      title: "Catégories",
       url: "#",
       icon: (
         <ListIcon
@@ -41,7 +42,7 @@ const data = {
       ),
     },
     {
-      title: "Analytics",
+      title: "Comptes",
       url: "#",
       icon: (
         <ChartBarIcon
@@ -49,7 +50,7 @@ const data = {
       ),
     },
     {
-      title: "Projects",
+      title: "Budget",
       url: "#",
       icon: (
         <FolderIcon
@@ -57,7 +58,7 @@ const data = {
       ),
     },
     {
-      title: "Team",
+      title: "Objectif",
       url: "#",
       icon: (
         <UsersIcon
@@ -67,7 +68,7 @@ const data = {
   ],
   navClouds: [
     {
-      title: "Capture",
+      title: "Insights",
       icon: (
         <CameraIcon
         />
@@ -86,7 +87,7 @@ const data = {
       ],
     },
     {
-      title: "Proposal",
+      title: "Alertes",
       icon: (
         <FileTextIcon
         />
@@ -186,9 +187,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:p-1.5!"
             >
-              <a href="#">
-                <CommandIcon className="size-5!" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+              <a href="/dashboard">
+                <img
+                  src="/logo-dark.png"
+                  alt="SpendSense"
+                  className="hidden dark:block h-30 w-auto"
+                />
+
+                <img
+                  src="/logo-light.png"
+                  alt="SpendSense"
+                  className="block dark:hidden h-30 w-auto"
+                />
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>

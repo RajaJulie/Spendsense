@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("antialiased", fontMono.variable, "font-sans", inter.variable)}
+      className={cn("dark","antialiased", fontMono.variable, "font-sans", inter.variable)}
     >
       <body className="min-h-full flex flex-col">
         <TooltipProvider>
