@@ -15,32 +15,32 @@ const categories = [
   {
     name: "Transport",
     image: "/categories/car.png",
-    spent: 120,
-    budget: 300,
+    spent: 320,
+    budget: 350,
     color: "orange",
     ringColor: "#f97316",
   },
   {
     name: "Loisirs",
     image: "/categories/gamepad.png",
-    spent: 90,
-    budget: 150,
+    spent: 190,
+    budget: 200,
     color: "orange",
     ringColor: "#f97316",
   },
   {
     name: "Épargne",
     image: "/categories/safe.png",
-    spent: 200,
-    budget: 500,
+    spent: 720,
+    budget: 1000,
     color: "green",
     ringColor: "#22c55e",
   },
   {
     name: "Shopping",
     image: "/categories/shopping.png",
-    spent: 160,
-    budget: 250,
+    spent: 460,
+    budget: 500,
     color: "orange",
     ringColor: "#f97316",
   },
@@ -50,12 +50,17 @@ export function CategorySection() {
   return (
     <section
       className="
+        mx-auto
+        w-full
+        max-w-[calc(100%-48px)]
         rounded-2xl
         border border-[#13223a]
         bg-gradient-to-t
         from-[#071226]
         to-[#0b1d3a]
-        p-6
+        p-4
+        
+
       "
     >
       <div className="mb-6 flex items-center justify-between">
@@ -68,7 +73,7 @@ export function CategorySection() {
         </button>
       </div>
 
-      <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]">
+      <div className="grid gap-3 [grid-template-columns:repeat(auto-fit,minmax(180px,1fr))]">
         {categories.map((category) => {
           const percentage = Math.round(
             (category.spent / category.budget) * 100

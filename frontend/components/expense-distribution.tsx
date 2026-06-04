@@ -19,7 +19,6 @@ const expenseData = [
   { name: "Alimentation", value: 510, color: "#ef4444" },
   { name: "Transport", value: 320, color: "#f97316" },
   { name: "Loisirs", value: 190, color: "#8b5cf6" },
-  { name: "Épargne", value: 200, color: "#22c55e" },
   { name: "Autres", value: 460, color: "#64748b" },
 ]
 
@@ -97,7 +96,7 @@ export function ExpenseDistribution() {
             return (
             <div
                 key={item.name}
-                className="grid grid-cols-[1fr_auto] items-center"
+                className="grid grid-cols-[1fr_70px_70px] items-center gap-5"
             >
                 <div className="flex items-center gap-3">
                 <span
@@ -107,6 +106,10 @@ export function ExpenseDistribution() {
 
                 <span>{item.name}</span>
                 </div>
+
+                <span className="text-right font-medium text-white">
+                    {item.value}€
+                </span>
 
                 <span className="font-medium">
                 {percentage}%

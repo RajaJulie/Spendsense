@@ -8,6 +8,7 @@ import { CategorySection } from "@/components/category-section"
 import { TransactionsSection } from "@/components/transactions-section"
 import { BankConnections } from "@/components/bank-connections"
 import { ExpenseDistribution } from "@/components/expense-distribution"
+import { MonthlyInsight } from "@/components/monthly-insight"
 
 import data from "./data.json"
 
@@ -28,11 +29,9 @@ export default function Page() {
           <div className="@container/main flex flex-1 flex-col gap-2">
             <div className="grid gap-6 px-4 py-4 lg:grid-cols-[1fr_minmax(450px,500px)] lg:px-6 md:py-6">
               {/* Colonne gauche */}
-              <div className="space-y-6">
+              <div className=" mx-auto w-full max-w-[1100px] space-y-6">
                 <SectionCards />
-
                 <CategorySection />
-
                 <TransactionsSection />
               </div>
 
@@ -40,7 +39,7 @@ export default function Page() {
               <div className="space-y-6">
                 <BankConnections />
                 <ExpenseDistribution /> 
-                {/* <MonthlyInsight /> */}
+                <MonthlyInsight /> 
               </div>
             </div>
           </div>
