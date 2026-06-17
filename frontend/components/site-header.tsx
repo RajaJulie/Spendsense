@@ -1,6 +1,22 @@
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
+import { NavUser } from "@/components/nav-user"
+import { Bell } from "lucide-react"
+import { NavMain } from "@/components/nav-main"
+
+
+const data = {
+  user: {
+    name: "shadcn",
+    email: "m@example.com",
+    avatar: "logo.png",
+  },
+  navMain: [
+    { title: "", url: "#", icon: <Bell /> },
+  ]
+
+}
 
 export function SiteHeader() {
   return (
@@ -11,7 +27,16 @@ export function SiteHeader() {
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
-        <h1 className="text-base font-medium">Documents</h1>
+        <h1 className="text-base font-medium">Dashboard</h1>
+        <div className="ms-310">
+          <NavMain items={data.navMain} />
+        </div>
+        
+
+        <div className="ml-auto">
+          
+          <NavUser user={data.user} />
+        </div>
       </div>
     </header>
   )
