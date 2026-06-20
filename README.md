@@ -1,4 +1,4 @@
-# SpendSense
+# FinInsight
 
 Application de gestion budgétaire développée avec Next.js et TypeScript.
 
