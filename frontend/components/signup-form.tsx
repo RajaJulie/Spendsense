@@ -1,3 +1,4 @@
+"use client"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -8,13 +9,56 @@ import {
   FieldSeparator,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { useState } from "react"
+
+
+
 
 export function SignupForm({
   className,
   ...props
+  
 }: React.ComponentProps<"form">) {
+
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  
+  const handleSubmit = async (
+  e: React.FormEvent<HTMLFormElement>
+) => {
+  e.preventDefault()
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match")
+    return
+  }
+
+  const response = await fetch("/api/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      email,
+      password,
+    }),
+  })
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    alert(data.message)
+    return
+  }
+
+  alert("Account created successfully")
+  
+}
   return (
-    <form className={cn("flex flex-col gap-6", className)} {...props}>
+    <form onSubmit={handleSubmit} className={cn("flex flex-col gap-6", className)} {...props}>
       <FieldGroup>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Create your account</h1>
@@ -30,6 +74,8 @@ export function SignupForm({
             placeholder="Julie QueenBee"
             required
             className="bg-background"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </Field>
         <Field>
@@ -42,6 +88,8 @@ export function SignupForm({
             pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
             title="Veuillez entrer un email valide avec un point."
             className="bg-background"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <FieldDescription>
             We&apos;ll use this to contact you. We will not share your email
@@ -58,6 +106,8 @@ export function SignupForm({
             pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,}$" 
             title="Le mot de passe doit contenir au moins 8 caractères avec une lettre et un chiffre."
             className="bg-background"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <FieldDescription>
             Must be at least 8 characters long.
@@ -70,6 +120,8 @@ export function SignupForm({
             type="password"
             required
             className="bg-background"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <FieldDescription>Please confirm your password.</FieldDescription>
         </Field>
